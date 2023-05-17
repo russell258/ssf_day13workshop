@@ -1,6 +1,5 @@
 package sg.nus.iss.visa.ssf.day13_workshop;
 
-import java.io.File;
 import java.util.List;
 
 import org.springframework.boot.DefaultApplicationArguments;
@@ -14,6 +13,7 @@ public class Day13WorkshopApplication {
 
 		// USE ALREADY EXISTING METHOD --> optVal. 
 		// File naming should be in controller
+		SpringApplication app = new SpringApplication(Day13WorkshopApplication.class);
 		DefaultApplicationArguments appArgs = new DefaultApplicationArguments(args);
 		List<String> opsValList = appArgs.getOptionValues("dataDir");
 		if (opsValList!=null && opsValList.size()>0){
@@ -22,8 +22,7 @@ public class Day13WorkshopApplication {
 			System.err.println("Directory not selected.");
 			System.exit(0);
 		}
-		
-		SpringApplication.run(Day13WorkshopApplication.class, args);
+		app.run(args);
 	}
 
 }
