@@ -1,5 +1,7 @@
 package sg.nus.iss.visa.ssf.day13_workshop.model;
 
+import java.time.LocalDate;
+
 import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.validation.constraints.Email;
@@ -22,15 +24,16 @@ public class Contact {
     private String phoneNumber;
 
     //one more for cannot be younger than 10 years old or older than 100... custom constraint?
+    @NotNull(message = "Date of birth is mandatory")
     @Past(message = "Date of birth cannot be in the future")
-    private DateTimeFormat dob;
+    private LocalDate dob;
 
     //should have a private final string id with uuid generator to add into constructors too.
 
     public Contact() {
     }
 
-    public Contact(String name, String email, String phoneNumber, @Past(message = "Date of birth cannot be in the future") DateTimeFormat dob) {
+    public Contact(String name, String email, String phoneNumber, @Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate dob) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -55,10 +58,10 @@ public class Contact {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public @Past(message = "Date of birth cannot be in the future") DateTimeFormat getDob() {
+    public @Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate getDob() {
         return dob;
     }
-    public void setDob(@Past(message = "Date of birth cannot be in the future") DateTimeFormat dob) {
+    public void setDob(@Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate dob) {
         this.dob = dob;
     }
 
