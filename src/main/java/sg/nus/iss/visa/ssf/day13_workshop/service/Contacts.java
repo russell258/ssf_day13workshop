@@ -79,6 +79,7 @@ public class Contacts {
             modifiedFiles.add(modifiedFile);
             System.out.println("woof woof woof getting all contacts");
         }
+        //be very careful of attributeName. If you name contact instead of contacts for e.g.
         model.addAttribute("contacts", modifiedFiles.toArray(new String [dataFiles.size()]));
     }
 
