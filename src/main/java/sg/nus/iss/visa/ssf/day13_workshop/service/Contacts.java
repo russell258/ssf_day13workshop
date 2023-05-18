@@ -16,12 +16,11 @@ public class Contacts {
     public void save(Contact contact, Model model, String dataDir){
         //change to ID later on after generated. also need to add ID for addAttribute to model.
         String fileName = contact.getName();
-        PrintWriter pw = null;
 
         try {
             FileWriter fw = new FileWriter(dataDir + File.separator + fileName + ".txt");
 
-            pw = new PrintWriter(fw);
+            PrintWriter pw = new PrintWriter(fw);
             pw.write(contact.getName());
             pw.write(contact.getEmail());
             pw.write(contact.getPhoneNumber());
@@ -29,11 +28,9 @@ public class Contacts {
 
             pw.flush();
             model.addAttribute("contact", new Contact(contact.getName(), contact.getEmail(), contact.getPhoneNumber(), contact.getDob()));
-
+            pw.close();
         }catch (IOException e){
             e.printStackTrace();
-        }finally{
-            pw.close();
         }
     }
 

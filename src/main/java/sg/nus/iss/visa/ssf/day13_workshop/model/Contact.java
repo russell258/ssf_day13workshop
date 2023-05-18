@@ -33,7 +33,7 @@ public class Contact {
     public Contact() {
     }
 
-    public Contact(String name, String email, String phoneNumber, @Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate dob) {
+    public Contact(String name, String email, String phoneNumber, LocalDate dob) {
         this.name = name;
         this.email = email;
         this.phoneNumber = phoneNumber;
@@ -58,10 +58,10 @@ public class Contact {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
     }
-    public @Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate getDob() {
+    public LocalDate getDob() {
         return dob;
     }
-    public void setDob(@Past(message = "Date of birth cannot be in the future") @NotNull(message = "Date of birth is mandatory") @Past(message = "Date of birth cannot be in the future") LocalDate dob) {
+    public void setDob(LocalDate dob) {
         this.dob = dob;
     }
 
