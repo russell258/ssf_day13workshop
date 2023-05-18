@@ -41,6 +41,7 @@ public class AddressBookController {
     public String saveAddressBook(@Valid Contact contact, BindingResult bindingResult, Model model){
         System.out.println(contact.toString());
 
+        //this will return addressBook but still be in /contact due to POSTMapping. How would you redirect the pathing back to / again?
         if(bindingResult.hasErrors()){
             return "addressBook";  
         }

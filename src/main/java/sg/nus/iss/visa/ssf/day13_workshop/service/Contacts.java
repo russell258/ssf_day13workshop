@@ -27,7 +27,7 @@ public class Contacts {
             pw.write(contact.getDob().toString());
 
             pw.flush();
-            model.addAttribute("contact", new Contact(contact.getName(), contact.getEmail(), contact.getPhoneNumber(), contact.getDob()));
+            model.addAttribute("contact", new Contact(contact.getId(), contact.getName(), contact.getEmail(), contact.getPhoneNumber(), contact.getDob()));
             pw.close();
         }catch (IOException e){
             e.printStackTrace();
