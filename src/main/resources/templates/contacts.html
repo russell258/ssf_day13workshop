@@ -10,7 +10,6 @@
     <h1>List of Contact</h1>
     <tr th:each="contact: ${contacts}">
       <td>
-        <!-- line 15 ${contact} is the individual contacts -->
         <a
           data-th-href="@{'/contact/' + ${contact}}"
           data-th-text="${contact}"

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import jakarta.validation.Valid;
@@ -49,6 +50,19 @@ public class AddressBookController {
         service.save(contact, model, dataDir);
         model.addAttribute("successMessage", "Contact saved successfully, with status code: "+ HttpStatus.CREATED);
         return "showContact";
+    }
+
+    @GetMapping("/contact/{contactId}")
+    public String getContactbyId(Model model, @PathVariable String contactId){
+        Contact contact = new Contact();
+        contact = service.getContactbyId(contactId, dataDir);
+        if (contact==null){
+            model.addAttribute("errorMessage", "Contact not found");
+            return "error";
+        }else{
+            model.addAttribute("contact", contact);
+            return "showContact";
+        }
     }
 
     // need the get by ID first
