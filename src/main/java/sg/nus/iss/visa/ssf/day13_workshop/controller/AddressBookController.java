@@ -51,11 +51,11 @@ public class AddressBookController {
         return "showContact";
     }
 
-    //need the get by ID first
-    // @GetMapping(path = "/list")
-    // public String getAllContacts(Model model) {
-    //     service.getAllContactInUR(model, dataDir);
-    //     return "contacts";
-    // }
+    // need the get by ID first
+    @GetMapping(path = "/list")
+    public String getAllContacts(Model model) {
+        service.getAllContactInURL(model, dataDir);
+        return "contacts";
+    }
     
 }
